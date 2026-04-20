@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #05060a;
+  color: #e6e8f0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.35);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #05060a; }
+::-webkit-scrollbar-thumb { background: #1a1d29; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #2a2d39; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, #a78bfa 0%, #22d3ee 50%, #f472b6 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-x 6s linear infinite;
+}
+
+/* Noise + grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(17, 19, 28, 0.65) 0%, rgba(11, 13, 20, 0.65) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.glow-ring {
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.25),
+    0 10px 40px -10px rgba(124, 58, 237, 0.35),
+    0 0 60px -20px rgba(34, 211, 238, 0.3);
+}
+
+.text-muted { color: #8b8fa3; }
+
+/* Hover card lift */
+.card {
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s, box-shadow 0.35s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow: 0 20px 60px -20px rgba(124, 58, 237, 0.35);
+}
+
+/* Aurora blobs */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  pointer-events: none;
+}
