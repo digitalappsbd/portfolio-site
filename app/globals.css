@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --paper: #f4f1eb;
+  --ink: #0e0e10;
+  --subtle: #8a8780;
+  --rule: #d9d4c8;
+  --ember: #b2323b;
 }
 
 html {
@@ -12,72 +17,93 @@ html {
 }
 
 body {
-  background: #05060a;
-  color: #e6e8f0;
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "ss02", "cv11";
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(124, 58, 237, 0.35);
-  color: #fff;
+  background: var(--ink);
+  color: var(--paper);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: #05060a; }
-::-webkit-scrollbar-thumb { background: #1a1d29; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #2a2d39; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--subtle); }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(90deg, #a78bfa 0%, #22d3ee 50%, #f472b6 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-x 6s linear infinite;
+.serif-italic {
+  font-family: "Instrument Serif", ui-serif, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-/* Noise + grid background */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(124, 58, 237, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 58, 237, 0.06) 1px, transparent 1px);
-  background-size: 44px 44px;
+.hairline {
+  height: 1px;
+  background: var(--rule);
 }
 
-.glass {
-  background: linear-gradient(180deg, rgba(17, 19, 28, 0.65) 0%, rgba(11, 13, 20, 0.65) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
+.num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1, "ss01" 1;
+  font-variant-numeric: tabular-nums;
 }
 
-.glow-ring {
-  box-shadow:
-    0 0 0 1px rgba(124, 58, 237, 0.25),
-    0 10px 40px -10px rgba(124, 58, 237, 0.35),
-    0 0 60px -20px rgba(34, 211, 238, 0.3);
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--subtle);
 }
 
-.text-muted { color: #8b8fa3; }
-
-/* Hover card lift */
-.card {
-  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s, box-shadow 0.35s;
+.underline-ember {
+  background-image: linear-gradient(var(--ember), var(--ember));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 1px;
+  transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(167, 139, 250, 0.35);
-  box-shadow: 0 20px 60px -20px rgba(124, 58, 237, 0.35);
+.underline-ember:hover {
+  background-size: 100% 2px;
 }
 
-/* Aurora blobs */
-.aurora {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.55;
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
   pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.8 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.marquee-track {
+  animation: marquee 42s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.status-dot {
+  position: relative;
+}
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.25;
+  animation: ripple 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes ripple {
+  0% { transform: scale(0.6); opacity: 0.35; }
+  100% { transform: scale(1.8); opacity: 0; }
 }

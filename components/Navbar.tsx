@@ -1,50 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-
 const links = [
-  { href: "#about", label: "About" },
+  { href: "#work", label: "Work" },
   { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
+  { href: "#stack", label: "Stack" },
+  { href: "#about", label: "About" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <motion.header
-      initial={{ y: -30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-xl bg-bg/70 border-b border-white/5" : ""
-      }`}
-    >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 group">
-          <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-cyan-500 text-sm font-bold">
+    <header className="sticky top-0 z-40 bg-paper/80 backdrop-blur-md border-b border-rule">
+      <nav className="max-w-[1400px] mx-auto px-6 md:px-10 h-14 grid grid-cols-[auto_1fr_auto] items-center gap-8">
+        <a href="#top" className="flex items-center gap-2.5">
+          <span className="h-6 w-6 rounded-sm bg-ink flex items-center justify-center text-paper text-[11px] font-semibold tracking-tight">
             S
-            <span className="absolute inset-0 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-500 opacity-50 blur-md group-hover:opacity-80 transition" />
           </span>
-          <span className="font-semibold tracking-tight">Sufi</span>
+          <span className="text-sm font-medium tracking-tight">
+            Md Abu Sufian
+            <span className="hidden sm:inline text-subtle font-normal"> — portfolio</span>
+          </span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-1 text-sm">
+        <ul className="hidden md:flex items-center justify-center gap-7 text-[13px]">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="px-3 py-2 rounded-md text-muted hover:text-white transition-colors"
+                className="text-ink/70 hover:text-ink transition-colors"
               >
                 {l.label}
               </a>
@@ -52,13 +34,17 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="mailto:sufibd2010@gmail.com"
-          className="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-white text-black font-medium hover:bg-white/90 transition"
-        >
-          Let&apos;s talk
-        </a>
+        <div className="flex items-center gap-3 justify-end">
+          <span className="eyebrow hidden lg:inline">MMXXVI</span>
+          <a
+            href="mailto:sufibd2010@gmail.com"
+            className="inline-flex items-center gap-2 text-[13px] px-3.5 py-1.5 rounded-full bg-ink text-paper font-medium transition-transform active:translate-y-[1px]"
+          >
+            Hire me
+            <span className="h-1.5 w-1.5 rounded-full bg-paper/70" />
+          </a>
+        </div>
       </nav>
-    </motion.header>
+    </header>
   );
 }

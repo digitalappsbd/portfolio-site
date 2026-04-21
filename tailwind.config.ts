@@ -5,35 +5,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: "#05060a",
-        panel: "#0b0d14",
-        border: "#1a1d29",
-        accent: "#7c3aed",
-        accent2: "#06b6d4",
-        muted: "#8b8fa3",
+        paper: "#f4f1eb",
+        ink: "#0e0e10",
+        subtle: "#8a8780",
+        rule: "#d9d4c8",
+        ember: "#b2323b",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        sans: ["Geist", "var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["Geist Mono", "var(--font-mono)", "ui-monospace", "monospace"],
+        serif: ["Instrument Serif", "ui-serif", "serif"],
       },
-      animation: {
-        "gradient-x": "gradient-x 8s ease infinite",
-        "float": "float 6s ease-in-out infinite",
-        "glow": "glow 3s ease-in-out infinite",
+      letterSpacing: {
+        tightest: "-0.04em",
       },
-      keyframes: {
-        "gradient-x": {
-          "0%, 100%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        glow: {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "1" },
-        },
+      maxWidth: {
+        measure: "62ch",
       },
     },
   },

@@ -1,154 +1,172 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Smartphone } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { SectionLabel } from "./About";
 
 const projects = [
   {
+    n: "01",
     name: "UnicornToolbox",
     url: "https://unicorntoolbox.com",
-    tagline: "127+ AI-powered tools for builders and creators.",
-    body: "The flagship platform — a growing suite of focused, fast, delightful tools under a single roof.",
+    tagline: "127+ focused tools for builders and creators.",
+    body: "The flagship platform — a growing suite of fast, single-purpose tools under one roof. Designed the product, built the platform, shipped the brand.",
     tags: ["Next.js", "TypeScript", "AI"],
-    accent: "from-violet-500/40 to-fuchsia-500/40",
+    year: "2022 —",
+    span: "md:col-span-7",
   },
   {
+    n: "02",
     name: "AgentPress",
     url: "https://agents.unicorntoolbox.com",
-    tagline: "Agent-native platform for deploying autonomous workflows.",
-    body: "Lets teams spin up, orchestrate, and observe AI agents without duct-taping five tools together.",
-    tags: ["Agents", "Python", "Next.js", "LLMs"],
-    accent: "from-cyan-500/40 to-blue-500/40",
+    tagline: "Agent-native platform for autonomous workflows.",
+    body: "Teams spin up, orchestrate, and observe AI agents without gluing five tools together.",
+    tags: ["Agents", "Python", "LLMs"],
+    year: "2025",
+    span: "md:col-span-5",
   },
   {
+    n: "03",
     name: "Unicorn Agency",
     url: "https://agency.unicorntoolbox.com",
     tagline: "AI-first digital agency surface.",
-    body: "Productized services and AI delivery — built on the same platform that powers UnicornToolbox.",
+    body: "Productized services and AI delivery, built on the same platform that powers UnicornToolbox.",
     tags: ["Next.js", "AI", "Marketing"],
-    accent: "from-emerald-500/40 to-teal-500/40",
+    year: "2024",
+    span: "md:col-span-5",
   },
   {
-    name: "Open source & experiments",
+    n: "04",
+    name: "Open-source & experiments",
     url: "https://github.com/digitalappsbd",
-    tagline: "Tools, starters, and ideas I push to GitHub.",
-    body: "Flutter apps, Next.js starters, AI experiments, and a steady stream of side projects.",
-    tags: ["Open Source", "Flutter", "Next.js"],
-    accent: "from-pink-500/40 to-rose-500/40",
+    tagline: "Tools, starters, and ideas pushed to GitHub.",
+    body: "Flutter apps, Next.js starters, AI experiments, and a steady stream of side projects that outlive their weekends.",
+    tags: ["Open Source", "Flutter", "Starters"],
+    year: "Ongoing",
+    span: "md:col-span-7",
     isGithub: true,
   },
 ];
 
 const mobileApps = [
-  {
-    name: "LiveKanvas",
-    body: "Live visual editing, in your pocket.",
-    gradient: "from-violet-500 to-fuchsia-500",
-  },
-  {
-    name: "Payvill",
-    body: "Modern payments experience for everyday users.",
-    gradient: "from-cyan-500 to-blue-500",
-  },
-  {
-    name: "Mo Browser",
-    body: "A fast, privacy-minded mobile browser.",
-    gradient: "from-emerald-500 to-teal-500",
-  },
-  {
-    name: "HealthBox",
-    body: "Personal health tracking — simple and calm.",
-    gradient: "from-pink-500 to-rose-500",
-  },
+  { name: "LiveKanvas", body: "Live visual editing, pocket-sized.", year: "2024" },
+  { name: "Payvill", body: "Modern payments for everyday users.", year: "2023" },
+  { name: "Mo Browser", body: "Fast, privacy-minded mobile browser.", year: "2022" },
+  { name: "HealthBox", body: "Personal health tracking, calmly done.", year: "2021" },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-28">
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionLabel index="04" title="Projects" />
+    <section id="work" className="relative py-28 md:py-40 border-t border-rule">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <SectionLabel index="01 / 05" title="Selected Work" caption="Real users, real dates" />
 
-        <div className="mt-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Selected work.
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-10">
+          <h2 className="md:col-span-8 text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium tracking-tightest leading-[0.98]">
+            Four shortlisted
+            <br />
+            projects — each one
+            <br />
+            taught me something
+            <br />
+            I carry <span className="serif-italic text-ember">forward</span>.
           </h2>
-          <p className="text-muted max-w-md">
-            The short list. Each one shipped to real users, each one taught me
-            something I carry into the next build.
+          <p className="md:col-span-4 md:col-start-9 md:self-end max-w-measure text-[14px] text-ink/70 leading-relaxed">
+            The long list lives on GitHub and in the footer. Below: the work
+            that has moved the needle for users or taste.
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-6">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-5">
           {projects.map((p, i) => (
             <motion.a
               key={p.name}
               href={p.url}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: i * 0.08 }}
-              className="group relative glass card rounded-3xl p-7 overflow-hidden"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.6, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              className={`group relative border border-rule rounded-2xl p-7 md:p-9 overflow-hidden bg-paper hover:border-ink transition-colors ${p.span}`}
             >
-              <div
-                className={`absolute -inset-px rounded-3xl bg-gradient-to-br ${p.accent} opacity-0 group-hover:opacity-100 transition duration-500 -z-10`}
-              />
-              {/* decorative */}
-              <div className="absolute right-6 top-6 opacity-40 group-hover:opacity-100 transition">
-                {p.isGithub ? <Github className="h-5 w-5" /> : <ExternalLink className="h-5 w-5" />}
+              <div className="flex items-start justify-between gap-6">
+                <div className="flex items-baseline gap-3">
+                  <span className="num text-[11px] text-subtle">{p.n}</span>
+                  <span className="eyebrow">{p.year}</span>
+                </div>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-rule text-ink group-hover:bg-ink group-hover:text-paper group-hover:border-ink transition-colors">
+                  {p.isGithub ? (
+                    <Github className="h-4 w-4" strokeWidth={1.5} />
+                  ) : (
+                    <ArrowUpRight
+                      className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      strokeWidth={2}
+                    />
+                  )}
+                </span>
               </div>
 
-              <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
-              <p className="mt-2 text-muted font-medium">{p.tagline}</p>
-              <p className="mt-4 text-sm text-muted leading-relaxed">{p.body}</p>
+              <h3 className="mt-10 md:mt-16 text-2xl md:text-3xl font-medium tracking-tight">
+                {p.name}
+              </h3>
+              <p className="mt-2 text-ink/80 text-[15px] leading-snug max-w-[44ch]">
+                {p.tagline}
+              </p>
+              <p className="mt-4 text-[13px] text-ink/60 leading-relaxed max-w-[52ch]">
+                {p.body}
+              </p>
 
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 pt-5 border-t border-rule">
                 {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[11px] font-mono uppercase tracking-wider px-2 py-1 rounded-md border border-white/10 text-muted"
-                  >
+                  <span key={t} className="eyebrow">
                     {t}
                   </span>
                 ))}
-              </div>
-
-              <div className="mt-6 text-sm text-cyan-400 flex items-center gap-1 opacity-80 group-hover:opacity-100">
-                {p.url.replace(/^https?:\/\//, "")}
-                <ExternalLink className="h-3.5 w-3.5" />
+                <span className="ml-auto num text-[12px] text-subtle hidden sm:inline">
+                  {p.url.replace(/^https?:\/\//, "")}
+                </span>
               </div>
             </motion.a>
           ))}
         </div>
 
-        <div className="mt-20">
-          <div className="flex items-center gap-3">
-            <Smartphone className="h-4 w-4 text-muted" />
-            <h3 className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
-              Mobile apps I&apos;ve shipped
-            </h3>
+        {/* Mobile apps — data table style */}
+        <div className="mt-24">
+          <div className="flex items-end justify-between gap-6 mb-6">
+            <div className="flex items-center gap-4">
+              <span className="eyebrow">Archive</span>
+              <span className="h-px w-12 bg-rule" />
+              <span className="eyebrow text-ink">Mobile apps shipped</span>
+            </div>
+            <span className="num text-[12px] text-subtle">{mobileApps.length} entries</span>
           </div>
 
-          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ul className="divide-y divide-rule border-t border-b border-rule">
             {mobileApps.map((a, i) => (
-              <motion.div
+              <motion.li
                 key={a.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="glass card rounded-2xl p-5 relative overflow-hidden"
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.45, delay: i * 0.04 }}
+                className="grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-baseline py-5 hover:bg-ink/[0.02] transition-colors -mx-3 px-3 md:-mx-4 md:px-4"
               >
-                <div
-                  className={`absolute -top-10 -right-10 h-24 w-24 rounded-full bg-gradient-to-br ${a.gradient} opacity-30 blur-2xl`}
-                />
-                <h4 className="font-semibold tracking-tight">{a.name}</h4>
-                <p className="mt-1 text-sm text-muted">{a.body}</p>
-              </motion.div>
+                <span className="num text-[11px] text-subtle w-6">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-5 min-w-0">
+                  <span className="text-[15px] font-medium tracking-tight">
+                    {a.name}
+                  </span>
+                  <span className="text-[13px] text-ink/60 truncate">
+                    {a.body}
+                  </span>
+                </div>
+                <span className="num text-[12px] text-subtle">{a.year}</span>
+              </motion.li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
