@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: "Geist", system-ui, -apple-system, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, serif;
 
   --paper: 244 241 235;
   --ink: 14 14 16;
@@ -50,7 +51,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgb(var(--subtle)); }
 
 .serif-italic {
-  font-family: "Instrument Serif", ui-serif, serif;
+  font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.01em;

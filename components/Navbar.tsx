@@ -12,8 +12,11 @@ const links = [
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-paper/80 backdrop-blur-md border-b border-rule">
-      <nav className="max-w-[1400px] mx-auto px-6 md:px-10 h-14 grid grid-cols-[auto_1fr_auto] items-center gap-8">
-        <a href="#top" className="flex items-center gap-2.5">
+      <nav
+        aria-label="Primary"
+        className="max-w-[1400px] mx-auto px-6 md:px-10 h-14 grid grid-cols-[auto_1fr_auto] items-center gap-8"
+      >
+        <a href="#top" aria-label="Md Abu Sufian — home" className="flex items-center gap-2.5">
           <span className="h-6 w-6 rounded-sm bg-ink flex items-center justify-center text-paper text-[11px] font-semibold tracking-tight">
             S
           </span>
@@ -41,6 +44,7 @@ export default function Navbar() {
           <ThemeToggle />
           <a
             href="mailto:sufibd2010@gmail.com"
+            aria-label="Hire Md Abu Sufian — email sufibd2010@gmail.com"
             className="inline-flex items-center gap-2 text-[13px] px-3.5 py-1.5 rounded-full bg-ink text-paper font-medium transition-transform active:translate-y-[1px]"
           >
             Hire me
