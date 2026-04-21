@@ -2,14 +2,15 @@ import type { Config } from "tailwindcss";
 
 export default {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        paper: "#f4f1eb",
-        ink: "#0e0e10",
-        subtle: "#8a8780",
-        rule: "#d9d4c8",
-        ember: "#b2323b",
+        paper: "rgb(var(--paper) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        subtle: "rgb(var(--subtle) / <alpha-value>)",
+        rule: "rgb(var(--rule) / <alpha-value>)",
+        ember: "rgb(var(--ember) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Geist", "var(--font-sans)", "system-ui", "sans-serif"],

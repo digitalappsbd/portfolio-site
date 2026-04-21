@@ -1,5 +1,7 @@
 "use client";
 
+import ThemeToggle from "./ThemeToggle";
+
 const links = [
   { href: "#work", label: "Work" },
   { href: "#experience", label: "Experience" },
@@ -34,8 +36,9 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3 justify-end">
-          <span className="eyebrow hidden lg:inline">MMXXVI</span>
+        <div className="flex items-center gap-2.5 justify-end">
+          <span className="eyebrow hidden lg:inline mr-1">MMXXVI</span>
+          <ThemeToggle />
           <a
             href="mailto:sufibd2010@gmail.com"
             className="inline-flex items-center gap-2 text-[13px] px-3.5 py-1.5 rounded-full bg-ink text-paper font-medium transition-transform active:translate-y-[1px]"
